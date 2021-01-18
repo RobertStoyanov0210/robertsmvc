@@ -1,7 +1,8 @@
 <?php
-// App Core Class
-// Creates URL & loads core controller
-// URL FORMAT -> /controller/method/params
+#  App Core Class
+#  Creates URL & loads core controller
+#  URL FORMAT -> /controller/method/params
+
 class Core
 {
   protected $currentController = 'Pages';
@@ -10,7 +11,6 @@ class Core
 
   public function __construct()
   {
-    // print_r($this->getURL());
     $url = $this->getURL();
 
     if (isset($url[0])) {
@@ -45,11 +45,11 @@ class Core
   public function getURL()
   {
     if (isset($_GET['url'])) {
-      # Removes last '/' from url
+      // Removes last '/' from url
       $url = rtrim($_GET['url'], '/');
-      # Removes all illegal URL chars from a string
+      // Removes all illegal URL chars from a string
       $url = filter_var($url, FILTER_SANITIZE_URL);
-      # Breaks url into array
+      // Breaks url into array
       $url = explode('/', $url);
       return $url;
     }
